@@ -1,0 +1,23 @@
+{
+  "name": "my-wxchat",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eslintrc.js",
+  "dependencies": {
+    "@vant/weapp": "^1.10.25"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alwkdaa/tonglehui-wechat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alwkdaa/tonglehui-wechat/issues"
+  },
+  "homepage": "https://github.com/alwkdaa/tonglehui-wechat#readme"
+}
