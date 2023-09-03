@@ -1,11 +1,12 @@
 /* flyio二次封装 */
+// 引入flyio
 import Fly from 'flyio'
 
 // 第一步先创建实例
 const fly = new Fly()
 
 // 配置后端请求地址
-fly.config.baseURL = "https://www.winweb.cloud.mall"
+fly.config.baseURL = "https://www.winweb.cloud/mall"
 // 超时时间
 fly.config.timeout = 1000 * 20
 
@@ -23,8 +24,6 @@ class RequestError extends Error {
 //添加请求拦截器
 fly.interceptors.request.use((request) => {
   //给所有请求添加自定义header
-
-
 
   //可以显式返回request, 也可以不返回，没有返回值时拦截器中默认返回request
   return request;

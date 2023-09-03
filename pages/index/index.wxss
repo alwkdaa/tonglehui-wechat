@@ -3,7 +3,7 @@
 }
 
 .search {
-  height: 120rpx;
+  height: 60px;
   padding-top: 70rpx;
   position: relative;
   width: 100vw;
@@ -32,4 +32,12 @@
   padding-left: 20rpx;
   line-height: 62rpx;
   font-size: 12px;
+}
+.swiper-container .swiper1 {
+  width: 750rp;
+  height: 375rpx;
+}
+.swiper-container .swiper1 image {
+  width: 750rpx;
+  height: 375rpx;
 }

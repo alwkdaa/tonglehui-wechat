@@ -1,10 +1,12 @@
+//先引入接口api
+const { bannerList } = require('../../apis/products')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    banners:[]
   },
   goSearch(){
     console.log("goserach");
@@ -13,7 +15,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    bannerList().then(res => {
+      if(res.code === 10000){
+        this.setData({
+          banners: res.data
+        })
+      }
+    })
   },
 
   /**
