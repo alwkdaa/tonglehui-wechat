@@ -113,3 +113,28 @@
   font-size: 24rpx;
   text-align: center;
 }
+
+/* 咨询公告 */
+.notice-box {
+  width: 100vw;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-bottom: 1rpx solid #efeff4;
+}
+
+.notice_swiper {
+  height: 88rpx;
+  width: 100%;
+}
+
+.notice_itemr {
+  padding-left: 16rpx;
+  font-size: 24rpx;
+  overflow: hidden;
+  color: #e64340;
+}
+.notice-icon {
+  width: 130rpx;
+  height: 33rpx;
+  margin-right: 10px;
+}

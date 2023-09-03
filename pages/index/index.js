@@ -1,5 +1,5 @@
 //先引入接口api
-const { bannerList, goodsDynamic, category } = require('../../apis/products')
+const { bannerList, goodsDynamic, category, notice } = require('../../apis/products')
 Page({
 
   /**
@@ -11,7 +11,9 @@ Page({
     // 用户购买记录数据
     goodsDynamic: [],
     // 金刚区数据
-    categories: []
+    categories: [],
+    // 咨询公告数据
+    noticeList:[]
   },
   goSearch() {
     console.log("goserach");
@@ -43,6 +45,13 @@ Page({
           categories: res.data
         })
       }
+    })
+    // 咨询公告
+    notice().then(res => {
+      console.log(res);
+      this.setData({
+        noticeList: res.data
+      })
     })
 
   },

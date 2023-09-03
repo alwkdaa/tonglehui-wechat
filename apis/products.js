@@ -15,3 +15,7 @@ export function goodsDynamic () {
 export function category() {
   return request.get('/category')
 }
+// 获取咨询公告接口
+export function notice (pageSize=5) {
+  return request.get(`/notice?pageSize=${pageSize}`)
+}

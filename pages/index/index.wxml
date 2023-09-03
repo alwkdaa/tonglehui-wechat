@@ -16,7 +16,7 @@
       </swiper-item>
     </block>
   </swiper>
-  <view class="goodsDynamic">
+  <view class="goodsDynamic" wx:if="{{goodsDynamic.length}}">
     <swiper class="swiper2" autoplay circular vertical>
       <swiper-item wx:for="{{goodsDynamic}}" wx:key="orderId" class="swiper-item">
         <view class="goodsDynamic-item">
@@ -27,7 +27,7 @@
   </view>
 </view>
 <!-- 金刚区 -->
-<view class="category-container">
+<view class="category-container" wx:if="{{categories.length}}">
   <view class="category-box">
     <view class="category-list" wx:for="{{categories}}" wx:key="id">
       <view class="category-column">
@@ -36,5 +36,15 @@
       </view>
     </view>
   </view>
+</view>
+<!-- 咨询公告 -->
+<view class="notice-box" wx:if="{{noticeList}}">
+  <swiper class="notice_swiper" autoplay circular vertical>
+    <swiper-item class="notice_itemr" wx:for="{{noticeList.dataList}}" wx:key="id">
+      <van-notice-bar background="#fff" mode="link" scrollable text="{{item.title}}">
+        <image class="notice-icon" slot="left-icon" src="../../images/home/notice.png" mode="aspectFit"></image>
+      </van-notice-bar>
+    </swiper-item>
+  </swiper>
 </view>
 
