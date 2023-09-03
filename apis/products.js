@@ -19,3 +19,8 @@ export function category() {
 export function notice (pageSize=5) {
   return request.get(`/notice?pageSize=${pageSize}`)
 }
+
+// 限时秒杀接口
+export function seckill() {
+  return request.get('/seckill')
+}

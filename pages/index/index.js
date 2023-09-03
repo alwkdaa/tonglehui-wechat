@@ -1,5 +1,5 @@
 //先引入接口api
-const { bannerList, goodsDynamic, category, notice } = require('../../apis/products')
+const { bannerList, goodsDynamic, category, notice, seckill } = require('../../apis/products')
 Page({
 
   /**
@@ -13,7 +13,9 @@ Page({
     // 金刚区数据
     categories: [],
     // 咨询公告数据
-    noticeList:[]
+    noticeList:{},
+    // 限时秒杀数据
+    miaoshaGoods:[]
   },
   goSearch() {
     console.log("goserach");
@@ -48,10 +50,38 @@ Page({
     })
     // 咨询公告
     notice().then(res => {
+      if(res.code === 10000){
+        this.setData({
+          noticeList: res.data
+        })
+      }
+    })
+
+    // 获取限时秒杀数据
+    seckill().then(res =>{
       console.log(res);
-      this.setData({
-        noticeList: res.data
-      })
+      //如果还没到秒杀开始时间，就显示还有多久开始，如果到秒杀时间就显示秒杀倒计时，这里对时间进行处理
+      if(res.code === 10000) {
+        res.data.result.forEach(el => {
+          // 获取当前时间
+          const _now = new Date().getTime()
+          // 做一个假数据验证
+          el.dateStart = '2022-04-08 13:26:21'
+          el.dateEnd = '2023-9-08 13:26:21'
+          // 所设置的活动开始时间大于当前时间说明活动未开始，反之活动开始
+          if(el.dateStart) {
+            el.dateStartInt = new Date(el.dateStart).getTime() - _now
+          }
+          // 当前时间与活动截止时间比较
+          if(el.dateEnd){
+            el.dateEndInt = new Date(el.dateEnd).getTime() - _now
+          }
+        })
+        this.setData({
+          miaoshaGoods: res.data.result
+        })
+      }
+     
     })
 
   },

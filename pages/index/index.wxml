@@ -47,4 +47,28 @@
     </swiper-item>
   </swiper>
 </view>
+<!-- 商品秒杀 -->
+<view class="container" wx:if="{{miaoshaGoods.length}}">
+  <van-divider class="table-text" content-position="center">
+    <image class="table-icon-miaosha" src="../../images/home/miaosha.png" mode="aspectFit" />限时秒杀
+  </van-divider>
+  <view class="miaosha-container">
+    <view class="miaosha-goods-list" wx:for="{{miaoshaGoods}}" wx:key="id">
+      <image class="image" src="{{item.pic}}"></image>
+      <view class="r">
+        <view class="goods-title">{{item.name}}</view>
+        <view class="count-down">
+          <van-count-down wx:if="{{item.dateStartInt>0}}" time="{{ item.dateStartInt }}" format="距离开始： HH 时 mm分 ss秒" />
+            <van-count-down wx:if="{{item.dateStartInt <=0 && item.dateEndInt > 0}}" time="{{ item.dateEndInt }}" format="剩余： HH 时 mm分 ss秒" />
+        </view>
+        <view class="miaosha-price-btn">
+          <view class="price">￥{{item.minPrice}} <text>￥{{item.originalPrice}}</text></view>
+          <van-button size="small" round type="danger" custom-class="msbtn" wx:if="{{item.dateStartInt > 0}}">未开始</van-button>
+          <van-button size="small" round type="danger" custom-class="msbtn" wx:if="{{item.dateEndInt <= 0}}">已结束</van-button>
+          <van-button size="small" round type="danger" custom-class="msbtn" wx:if="{{item.dateStartInt <= 0 && item.dateEndInt > 0}}">立即抢购</van-button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
 
