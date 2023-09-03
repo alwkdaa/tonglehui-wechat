@@ -33,6 +33,7 @@
   line-height: 62rpx;
   font-size: 12px;
 }
+/* 轮播图 */
 .swiper-container{
   position: relative;
 }
@@ -44,6 +45,7 @@
   width: 750rpx;
   height: 375rpx;
 }
+/* 购买记录 */
 .goodsDynamic{
   position: absolute;
   bottom: 46rpx;
@@ -74,4 +76,40 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+/* 金刚区 */
+.category-container{
+  padding: 0 0 10px 0;
+  margin-top: 16rpx;
+  position: relative;
+  background-color: white;
+}
+.category-box{
+  background-color: #fff;
+  /* display: flex; */
+  box-shadow: 0px 0px 18px 0px rgba(5,5,5,0.15);
+  width: 700rpx;
+  margin-left: 25rpx;
+  border-radius: 10px;
+  padding: 20rpx 0;
+  position: inherit;
+}
+.category-list{
+  width: 140rpx;
+  text-align: center;
+  display: inline-block;
+  overflow: hidden;
+}
+.category-column{
+  width: 100%;
+  margin-top: 20rpx;
+  overflow: hidden;
+}
+.category-imgbox{
+  width: 100rpx;
+  height: 100rpx;
+}
+.category-title{
+  font-size: 24rpx;
+  text-align: center;
 }

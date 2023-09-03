@@ -11,3 +11,7 @@ export function bannerList() {
 export function goodsDynamic () {
   return request.get('/goodsDynamic')
 }
+// 金刚区列表
+export function category() {
+  return request.get('/category')
+}
