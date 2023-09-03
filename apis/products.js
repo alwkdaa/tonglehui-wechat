@@ -6,3 +6,8 @@ import request from '../utils/request'
 export function bannerList() {
   return request.get('/bannerList')
 }
+
+// 用户购买记录
+export function goodsDynamic () {
+  return request.get('/goodsDynamic')
+}

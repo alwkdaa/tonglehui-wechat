@@ -7,6 +7,7 @@
     </view>
   </view>
 </van-sticky>
+<!-- 轮播图 -->
 <view class="swiper-container">
   <swiper class="swiper1" indicator-dots autoplay circular indicator-active-color="#fff">
     <block wx:for="{{banners}}" wx:key="id">
@@ -15,4 +16,14 @@
       </swiper-item>
     </block>
   </swiper>
+  <view class="goodsDynamic">
+    <swiper class="swiper2" autoplay circular vertical>
+      <swiper-item wx:for="{{goodsDynamic}}" class="swiper-item">
+        <view class="goodsDynamic-item">
+          <text>{{item.nick}} 购买了 {{item.goodsName}}</text>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
 </view>
+
