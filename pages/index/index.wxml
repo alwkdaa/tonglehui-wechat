@@ -71,4 +71,66 @@
     </view>
   </view>
 </view>
+<!-- 爆品推荐 -->
+<view class="space"></view>
+  <van-divider custom-class="table-text" wx:if="{{goodsRecommend.length > 0}}"
+    contentPosition="center">
+    <image class="table-icon-tuijian" src="../../images/home/recommend.png"></image> 爆品推荐
+  </van-divider>
+  <view class="goods-container" wx:if="{{goodsRecommend.length > 0}}">
+    <view class="goods-box" wx:for="{{goodsRecommend}}" wx:key="id" bindtap="toDetailsTap" data-id="{{item.id}}" data-supplytype="{{item.supplyType}}" data-yyid="{{item.yyId}}">
+      <view class="img-box">
+        <image src="{{item.pic}}" class="image" mode="aspectFill" lazy-load="true" />
+      </view>
+      <view class="goods-title van-multi-ellipsis--l2">{{item.name}}</view>
+      <view wx:if="{{item.characteristic}}" class="characteristic van-multi-ellipsis--l2" style="-webkit-line-clamp: 1;">{{item.characteristic}}</view>
+      <view style='display:flex;'>
+        <view class="goods-price">¥ {{item.minPrice}}</view>
+        <view wx:if="{{item.originalPrice && item.originalPrice > 0}}" class="goods-price"
+          style='color:#aaa;text-decoration:line-through'>¥ {{item.originalPrice}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 疯狂砍价 -->
+  <view class="space"></view>
+  <view wx-if="{{kanjiaList.length > 0}}"
+    class="kanjia-container">
+    <van-divider custom-class="table-text" contentPosition="center">
+      <image class="table-icon-kanjia" src="../../images/home/kanjia.png"></image> 疯狂砍价
+    </van-divider>
+    <van-card custom-class="kanjia-vcard" wx:for="{{kanjiaList}}" wx:key="id" price="{{item.kanjiaPrice}}"
+      origin-price="{{item.originalPrice}}" desc="{{item.characteristic}}" title="{{item.name}}" thumb="{{item.pic}}">
+      <view slot="footer">
+        <van-button custom-class="kjbtn" type="danger" size="small" data-id="{{item.id}}" data-supplytype="{{item.supplyType}}" data-yyid="{{item.yyId}}" bind:click="toDetailsTap">砍价
+        </van-button>
+      </view>
+      <view slot="price-top">
+        <van-progress custom-class="vprogress" percentage="{{item.process}}" color="#FDEDED;" />
+      </view>
+    </van-card>
+  </view>
+  <!-- 拼团 -->
+  <block wx:if="{{pingtuanList.length > 0}}">
+    <view class="space"></view>
+    <van-divider custom-class="table-text" contentPosition="center">
+      <image class="table-icon-pingtuan" src="../../images/home/pingtuan.png"></image> 全民拼团
+    </van-divider>
+    <view class='tuan'>
+      <view class='tuan-item' wx:for="{{pingtuanList}}" wx:key="id">
+        <view class='tuan-goods-pic'>
+          <image src="{{item.pic}}" mode="aspectFill" lazy-load='{{true}}' />
+        </view>
+        <view class='tuan-title'>{{item.name}}</view>
+        <view class='tuan-profile'>{{item.characteristic}}</view>
+        <van-tag custom-class="pingtuantag" wx:if="{{item.tags}}" type="danger">{{item.tags}}</van-tag>
+        <view class='tuan-price'>
+          <text class='now'>￥ {{item.pingtuanPrice}}</text>
+          <text class='original'>￥ {{item.originalPrice}}</text>
+        </view>
+        <view class="tuan-btn">
+          <button class="ptbtn" type="warn" size="mini" bindtap="toDetailsTap" data-id="{{item.id}}" data-supplytype="{{item.supplyType}}" data-yyid="{{item.yyId}}">拼团</button>
+        </view>
+      </view>
+    </view>
+  </block>
 

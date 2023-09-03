@@ -230,3 +230,153 @@
   font-size: 26rpx;
   text-decoration: line-through;
 }
+/*  爆品推荐  */
+.table-icon-tuijian {
+  width: 34rpx;
+  height: 40rpx;
+  margin-right: 18rpx;
+}
+.goods-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  box-sizing: content-box;
+  padding: 0 24rpx;
+}
+.goods-box {
+  width: 339rpx;
+  /* height: 472rpx; */
+  background-color: #fff;
+  overflow: hidden;
+  margin-bottom: 24rpx;
+  border-radius: 5px;
+  border: 1px solid #D1D1D1;
+  padding-bottom: 10rpx;
+}
+.goods-box .img-box {
+  width: 339rpx;
+  height: 339rpx;
+  overflow: hidden;
+}
+.goods-box .img-box image {
+  width: 339rpx;
+  height: 339rpx;
+}
+.goods-box .goods-title {
+  width: 280rpx;
+  font-size: 24rpx;
+  color: #333;
+  margin-left: 24rpx;
+}
+.goods-box .goods-price-container {
+  display: flex;
+  align-items: baseline;
+}
+.goods-box .goods-price {
+  overflow: hidden;
+  font-size: 34rpx;
+  color: #F20C32;
+  margin-left: 24rpx;
+}
+/* 砍价 */
+.kanjia-container {
+  margin-top: 0px;
+  padding-bottom: 12rpx;
+}
+.table-icon-kanjia {
+  width: 34rpx;
+  height: 40rpx;
+  margin-right: 18rpx;
+}
+.kanjia-vcard {
+  background-color: white !important;
+}
+
+.kjbtn {
+  width: 170rpx;
+  height: 60rpx;
+  background: linear-gradient(156deg, #FF7863 0%, #FF211A 100%) !important;
+  border-radius: 34rpx !important;
+  border: none !important;
+  line-height: 60rpx !important;
+  font-size: 13px !important;
+}
+.vprogress {
+  margin-top: 24rpx;
+}
+
+/* 拼团 */
+.table-icon-pingtuan {
+  width: 34rpx;
+  height: 51rpx;
+  margin-right: 18rpx;
+}
+.tuan {
+  width: 750rpx;
+  padding-bottom: 20rpx;
+}
+
+.tuan-item {
+  width: 720rpx;
+  margin: auto;
+  margin-top: 20rpx;
+  background-color: #FFF;
+  position: relative;
+}
+
+.tuan-goods-pic {
+  width: 720rpx;
+  height: 250rpx;
+  overflow: hidden;
+}
+
+.tuan-goods-pic image {
+  width: 720rpx;
+}
+
+.tuan-title {
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  font-weight: 400;
+}
+
+.tuan-profile {
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+.pingtuantag {
+  margin-left: 16rpx;
+}
+.tuan-price {
+  margin-left: 20rpx;
+}
+
+.tuan-price .now {
+  font-size: 36rpx;
+  color: #e64340;
+}
+
+.tuan-price .original {
+  margin-left: 20rpx;
+  font-size: 26rpx;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.tuan-btn {
+  position: absolute;
+  right: 30rpx;
+  bottom: 0rpx;
+}
+.ptbtn {
+  width: 170rpx;
+  height: 60rpx;
+  background: linear-gradient(156deg, #FF7863 0%, #FF211A 100%) !important;
+  border-radius: 34rpx !important;
+  border: none !important;
+  line-height: 60rpx !important;
+  font-size: 13px !important;
+}
+

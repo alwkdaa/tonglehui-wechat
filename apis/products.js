@@ -24,3 +24,15 @@ export function notice (pageSize=5) {
 export function seckill() {
   return request.get('/seckill')
 }
+// 爆款推荐
+export function hotGoods () {
+  return request.get('/hotGoods')
+}
+// 疯狂砍价
+export function discount () {
+  return request.get('/discount')
+}
+//全民拼团
+export function collage () {
+  return request.get('/collage')
+}

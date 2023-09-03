@@ -35,7 +35,9 @@
     "van-sticky": "@vant/weapp/sticky/index",
     "van-notice-bar": "@vant/weapp/notice-bar/index",
     "van-divider": "@vant/weapp/divider/index",
-    "van-count-down": "@vant/weapp/count-down/index"
+    "van-count-down": "@vant/weapp/count-down/index",
+    "van-card": "@vant/weapp/card/index",
+    "van-progress": "@vant/weapp/progress/index"
   },
   "sitemapLocation": "sitemap.json"
 }

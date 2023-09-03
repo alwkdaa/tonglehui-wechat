@@ -1,5 +1,5 @@
 //先引入接口api
-const { bannerList, goodsDynamic, category, notice, seckill } = require('../../apis/products')
+const { bannerList, goodsDynamic, category, notice, seckill, hotGoods, discount, collage } = require('../../apis/products')
 Page({
 
   /**
@@ -15,7 +15,13 @@ Page({
     // 咨询公告数据
     noticeList:{},
     // 限时秒杀数据
-    miaoshaGoods:[]
+    miaoshaGoods:[],
+    // 爆品推荐
+    goodsRecommend: [],
+    // 疯狂砍价数据
+    kanjiaList:[],
+    // 全民拼团数据
+    pingtuanList:[]
   },
   goSearch() {
     console.log("goserach");
@@ -84,6 +90,25 @@ Page({
      
     })
 
+    // 爆品推荐
+    hotGoods().then(res => {
+      this.setData({
+        goodsRecommend: res.data.result
+      })
+    })
+    // 疯狂砍价
+    discount().then(res => {
+      this.setData({
+        kanjiaList: res.data.result
+      })
+    })
+
+    // 全民拼团
+    collage().then(res => {
+      this.setData({
+        pingtuanList: res.data.result
+      })
+    })
   },
 
   /**
