@@ -30,6 +30,9 @@
         }
     ]
   },
-
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-sticky": "@vant/weapp/sticky/index"
+  },
   "sitemapLocation": "sitemap.json"
 }
