@@ -3,7 +3,16 @@
   <view class="search-container">
     <view class="search">
       <view class="search-title">童乐汇</view>
-      <input bindtap="goSearch" placeholder="输入关键词搜索" type="text"/>
+      <input bindtap="goSearch" placeholder="输入关键词搜索" type="text" />
     </view>
   </view>
 </van-sticky>
+<view class="swiper-container">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay indicator-active-color="#fff">
+    <block wx:for="{{background}}" wx:key="*this">
+      <swiper-item>
+        <view class="swiper-item {{item}}"></view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
