@@ -13,5 +13,12 @@
         <text class="{{small.active ? 'active' :''}}" wx:for="{{item.childsCurGoods}}" wx:for-item="small" wx:for-index="idx" wx:key="id" data-propertyindex="{{index}}" data-propertychildindex="{{idx}}" bindtap="skuSelect">{{small.name}}</text>
       </view>
     </view>
+    <view class="num">
+      <view class="t">购买数量</view>
+      <van-stepper value="{{ skuCurGoods.basicInfo.storesBuy }}" bind:plus="storesJia" bind:minus="storesJian" />
+    </view>
+    <view class="btn">
+      <van-button type="danger" block round bindtap="addCarSku">加入购物车</van-button>
+    </view>
   </view>
 </van-popup>

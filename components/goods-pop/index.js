@@ -30,11 +30,23 @@ Component({
     async initGoodsData(skuCurGoodsBaseInfo) {
       // 请求商品详情数据
       const skuCurGoodsRes = await getGoodDetail(skuCurGoodsBaseInfo.id)
+      // 隐藏tabBar
+      wx.hideTabBar()
       const skuCurGoods = skuCurGoodsRes.data
+      skuCurGoods.basicInfo.storesBuy = 1
       this.setData({
         show: true,
         skuCurGoods 
       })
+    },
+    // 弹出层关闭
+    onClose(){
+      this.setData({
+        show:false
+      },() => {
+        wx.showTabBar()
+      })
+   
     },
     // 选择规格
     skuSelect(e) {
@@ -66,6 +78,31 @@ Component({
       this.setData({
         skuCurGoods
       })
+    },
+    // 数量增加
+    storesJia(){
+      const skuCurGoods = JSON.parse(JSON.stringify(this.data.skuCurGoods))
+      //判断购买数量是否是小于库存
+      if(skuCurGoods.basicInfo.stores > skuCurGoods.basicInfo.storesBuy){
+        skuCurGoods.basicInfo.storesBuy += 1
+        this.setData({
+          skuCurGoods
+        })
+      }
+    },
+    // 数量减少
+    storesJian(){
+      const skuCurGoods = JSON.parse(JSON.stringify(this.data.skuCurGoods))
+      if(skuCurGoods.basicInfo.storesBuy > 1){
+        skuCurGoods.basicInfo.storesBuy -= 1
+        this.setData({
+          skuCurGoods
+        })
+      }
+    },
+    // 加入购物车按钮
+    addCarSku(){
+
     }
   }
 })

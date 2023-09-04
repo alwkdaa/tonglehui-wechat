@@ -57,7 +57,8 @@
     "van-empty": "@vant/weapp/empty/index",
     "van-popup": "@vant/weapp/popup/index",
     "van-transition": "@vant/weapp/transition/index",
-    "van-field": "@vant/weapp/field/index"
+    "van-field": "@vant/weapp/field/index",
+    "van-stepper": "@vant/weapp/stepper/index"
   },
   "sitemapLocation": "sitemap.json"
 }
