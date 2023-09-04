@@ -12,8 +12,8 @@ export function goodsDynamic () {
   return request.get('/goodsDynamic')
 }
 // 金刚区列表
-export function category() {
-  return request.get('/category')
+export function category(data) {
+  return request.get('/category',data)
 }
 // 获取咨询公告接口
 export function notice (pageSize=5) {

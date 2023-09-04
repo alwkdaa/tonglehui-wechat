@@ -30,6 +30,18 @@ Page({
     // 商品列表
     goods:[]
   },
+  tabClick(e) {
+    // 商品分类点击
+    const category = this.data.categories.find(ele => {
+      return ele.id == e.currentTarget.dataset.id
+    })
+
+    // console.log(category.id,"id");
+    wx.setStorageSync("_categoryId", category.id)
+    wx.switchTab({
+      url: '/pages/category/index',
+    })
+  },
   goSearch() {
     console.log("goserach");
   },

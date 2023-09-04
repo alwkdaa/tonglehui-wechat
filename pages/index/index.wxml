@@ -30,7 +30,7 @@
 <view class="category-container" wx:if="{{categories.length}}">
   <view class="category-box">
     <view class="category-list" wx:for="{{categories}}" wx:key="id">
-      <view class="category-column">
+      <view class="category-column" bindtap="tabClick" data-id="{{item.id}}">
         <image class="category-imgbox" src="{{item.icon}}" mode="aspectFit"></image>
         <view class="category-title">{{item.name}}</view>
       </view>

@@ -5,7 +5,8 @@
   "main": ".eslintrc.js",
   "dependencies": {
     "@vant/weapp": "^1.10.25",
-    "flyio": "^0.6.14"
+    "flyio": "^0.6.14",
+    "apifm-wxapi": "^3.55.0"
   },
   "devDependencies": {},
   "scripts": {

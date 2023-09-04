@@ -1,0 +1,12 @@
+<!--pages/category/index.wxml-->
+<van-search value="{{ value }}" placeholder="请输入搜索关键词" use-right-icon-slot>
+  <van-icon name="scan" slot="right-icon" bindtap="searchScan"></van-icon>
+</van-search>
+<view class="main">
+  <!-- 左侧商品分类tab -->
+  <scroll-view scroll-y="true" custom-class="category-container">
+    <van-sidebar active-key="{{ activeCategory }}">
+      <van-sidebar-item data-id="{{item.id}}" data-index="{{index}}" bindtap="onCategoryClick" wx:for="{{firstCategories}}" wx:key="id" title="{{item.name}}" />
+</van-sidebar>
+  </scroll-view>
+</view>
