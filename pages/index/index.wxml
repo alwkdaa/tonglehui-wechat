@@ -134,3 +134,27 @@
     </view>
   </block>
 
+<!-- 商品列表 -->
+<view class='space'></view>
+  <van-divider custom-class="table-text" contentPosition="center">
+    <image class="table-icon-goodslist" src="../../images/home/goodslist.png"></image> 商品列表
+  </van-divider>
+  <view class="goods-container">
+    <view class="goods-box" wx:for="{{goods}}" wx:key="id" bindtap="toDetailsTap" data-id="{{item.id}}" data-supplytype="{{item.supplyType}}" data-yyid="{{item.yyId}}">
+      <view class="img-box">
+        <image src="{{item.pic}}" class="image" mode="aspectFill" lazy-load="true" />
+      </view>
+      <view class="goods-title van-multi-ellipsis--l2">{{item.name}}</view>
+      <view wx:if="{{item.characteristic}}" class="characteristic van-multi-ellipsis--l2" style="-webkit-line-clamp: 1;">{{item.characteristic}}</view>
+      <view class="goods-price-container">
+        <view class="goods-price">¥ {{item.minPrice}}</view>
+        <view wx:if="{{item.originalPrice && item.originalPrice > 0}}" class="goods-price2">¥ {{item.originalPrice}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <van-divider wx:if="{{ !loadingMoreHidden }}" contentPosition="center">没有更多啦</van-divider> 
+<view class='coupons-float' bindtap="goCoupons">
+  <image src="/images/gift.png"></image>
+</view>
+

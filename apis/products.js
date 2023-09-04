@@ -36,3 +36,7 @@ export function discount () {
 export function collage () {
   return request.get('/collage')
 }
+// 商品列表接口
+export function goodlist ({ page, pageSize, categoryId }) {
+  return request.get(`/goodlist?page=${page}&pageSize=${pageSize}&categoryId=${categoryId}`)
+}

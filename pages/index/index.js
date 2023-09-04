@@ -1,5 +1,5 @@
 //先引入接口api
-const { bannerList, goodsDynamic, category, notice, seckill, hotGoods, discount, collage } = require('../../apis/products')
+const { bannerList, goodsDynamic, category, notice, seckill, hotGoods, discount, collage, goodlist } = require('../../apis/products')
 Page({
 
   /**
@@ -21,15 +21,42 @@ Page({
     // 疯狂砍价数据
     kanjiaList:[],
     // 全民拼团数据
-    pingtuanList:[]
+    pingtuanList:[],
+    // 类目
+    categoryId: '',
+    page:1,
+    pageSize: 20,
+    totalRow: 0,
+    // 商品列表
+    goods:[]
   },
   goSearch() {
     console.log("goserach");
+  },
+  // 分页获取商品列表
+  async getGoodsList(){
+    const { categoryId, page, pageSize} = this.data
+    wx.showLoading({
+      mask: true
+    })
+    const res = await goodlist({
+      categoryId,
+      page,
+      pageSize
+    })
+    wx.hideLoading()
+    this.setData({
+      // 使用扩展运算符进行数组合并
+      goods:[...this.data.goods, ...res.data.result],
+      totalRow:res.data.totalRow
+    })
+    
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getGoodsList()
     // 获取轮播图数据
     bannerList().then(res => {
       if (res.code === 10000) {
@@ -150,7 +177,13 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    // 拿到当前商品的数据与后端返回的商品数据进行对比
+    if(this.data.goods.length >= this.data.totalRow) return
+    this.setData({
+      page:this.data.page + 1
+    },() => {
+      this.getGoodsList()
+    })
   },
 
   /**
