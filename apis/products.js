@@ -40,3 +40,7 @@ export function collage () {
 export function goodlist ({ page, pageSize, categoryId }) {
   return request.get(`/goodlist?page=${page}&pageSize=${pageSize}&categoryId=${categoryId}`)
 }
+// 获取商品详情接口
+export function getGoodDetail(id) {
+  return request.get(`/getGoodDetail?id=${id}`)
+}

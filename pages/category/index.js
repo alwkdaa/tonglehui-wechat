@@ -16,7 +16,9 @@ Page({
     firstCategories:[],
     page: 1 ,
     pageSize:20,
-    currentGoods:[]
+    currentGoods:[],
+    // 控制弹出层的弹出
+    skuCurGoods: null
   },
   searchScan(){
     // 扫码跳转的逻辑
@@ -131,7 +133,9 @@ Page({
     const curGood = this.data.currentGoods.find(el => {
       return el.id = id
     })
-    console.log(curGood);
+    this.setData({
+      skuCurGoods: curGood
+    })
   },
   /**
    * 生命周期函数--监听页面加载

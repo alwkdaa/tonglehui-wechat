@@ -42,6 +42,7 @@
     ]
   },
   "usingComponents": {
+    "goods-pop": "/components/goods-pop/index",
     "van-button": "@vant/weapp/button/index",
     "van-sticky": "@vant/weapp/sticky/index",
     "van-notice-bar": "@vant/weapp/notice-bar/index",
@@ -53,7 +54,8 @@
     "van-search": "@vant/weapp/search/index",
     "van-sidebar": "@vant/weapp/sidebar/index",
     "van-sidebar-item": "@vant/weapp/sidebar-item/index",
-    "van-empty": "@vant/weapp/empty/index"
+    "van-empty": "@vant/weapp/empty/index",
+    "van-popup": "@vant/weapp/popup/index"
   },
   "sitemapLocation": "sitemap.json"
 }
