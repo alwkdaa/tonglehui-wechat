@@ -2,6 +2,16 @@
   show="{{ show }}"
   round
   position="bottom"
-  custom-style="height: 20%"
+  custom-style="padding-top: 32rpx"
   bind:close="onClose"
-></van-popup>
+>
+  <van-card price="{{skuCurGoods.basicInfo.minPrice}}" title="{{skuCurGoods.basicInfo.name}}" thumb="{{skuCurGoods.basicInfo.pic}}"></van-card>
+  <view class="sku-container">
+    <view class="sku" wx:for="{{skuCurGoods.properties}}" wx:key="id">
+      <view class="t">{{item.name}}</view>
+      <view class="items">
+        <text class="{{small.active ? 'active' :''}}" wx:for="{{item.childsCurGoods}}" wx:for-item="small" wx:for-index="idx" wx:key="id" data-propertyindex="{{index}}" data-propertychildindex="{{idx}}" bindtap="skuSelect">{{small.name}}</text>
+      </view>
+    </view>
+  </view>
+</van-popup>
