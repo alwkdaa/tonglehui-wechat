@@ -4,9 +4,38 @@
 </van-search>
 <view class="main">
   <!-- 左侧商品分类tab -->
-  <scroll-view scroll-y="true" custom-class="category-container">
+  <scroll-view scroll-y="true" class="category-container">
     <van-sidebar active-key="{{ activeCategory }}">
       <van-sidebar-item data-id="{{item.id}}" data-index="{{index}}" bindtap="onCategoryClick" wx:for="{{firstCategories}}" wx:key="id" title="{{item.name}}" />
-</van-sidebar>
+    </van-sidebar>
+  </scroll-view>
+  <!-- 商品列表滚动区域 -->
+  <scroll-view scroll-y="true" class="goods-container" bindscrolltolower="goodsBottom">
+    <wxs module="goodsDetailPage">
+      module.exports = {
+        url: function (item) {
+          if(item.supplyType == 'vop_id'){
+            return '/pages/goods-details/vop?id=' + item.yyId + '&goodsId=' + item.id
+          }else {
+            return '/pages/goods-details/index?id=' + item.id
+          }
+        }
+      }
+    </wxs>
+    <van-empty wx:if="{{currentGoods.length === 0}}" description="暂无商品" />
+    <!-- 商品列表 -->
+    <van-card
+      wx:for="{{currentGoods}}" wx:key="id"
+      price="{{item.minPrice}}"
+      title="{{item.name}}"
+      thumb="{{item.pic}}"
+      thumb-link="{{ goodsDetailPage.url(item) }}"
+    >
+      <!-- 卡片右下角的按钮 -->
+      <view class="goods-btn" slot="footer">
+        <van-icon wx:if="{{item.hasAddition || item.propertyIds}}" name="add" color="#e64340" size="48rpx" bindtap="addShopcar" data-id="{{item.id}}"></van-icon>
+        <van-icon wx:else name="shopping-cart-o" color="#e64340" size="48rpx" bindtap="addShopcar" data-id="{{item.id}}"></van-icon>
+      </view>
+    </van-card>
   </scroll-view>
 </view>

@@ -1,6 +1,6 @@
 // pages/category/index.js
 // 引入接口
-const { category } = require('../../apis/products')
+const { category, goodlist } = require('../../apis/products')
 Page({
 
   /**
@@ -13,7 +13,10 @@ Page({
       name: '',
       id: ''
     },
-    firstCategories:[]
+    firstCategories:[],
+    page: 1 ,
+    pageSize:20,
+    currentGoods:[]
   },
   searchScan(){
     // 扫码跳转的逻辑
@@ -56,6 +59,8 @@ Page({
         activeCategory,
         firstCategories,
         categorySelected
+      }, () => {
+        this.getGoodsList()
       })
     }
   },
@@ -65,13 +70,68 @@ Page({
     // 拿到当前选中的页签数据
     const categorySelected = this.data.firstCategories[index]
     this.setData({
+      page:1,
       activeCategory:index,
       categorySelected
     })
+    this.getGoodsList()
   },
   // 请求商品列表数据
-  getGoodsList(){
-
+  async getGoodsList(){
+    wx.showLoading({
+      title: ''
+    })
+    // 获取到当前类目的id
+    const { id:categoryId } = this.data.categorySelected
+    const res = await goodlist({
+      page:this.data.page,
+      pageSize: this.data.pageSize,
+      categoryId
+    })
+    wx.hideLoading()
+    if(res.code === 10000){
+      // 判断当前数据是否全部请求完成
+      if(this.data.page == 1){
+        this.setData({
+          currentGoods: res.data.result
+        })
+      }else{
+        this.setData({
+          currentGoods: this.data.currentGoods.concat(res.data.result)
+        })
+      }
+      
+    }
+    // 当前列表没有数据
+    if(res.code == 700){
+      if(this.data.page == 1){
+        this.setData({
+          currentGoods: []
+        })
+      }else{
+        wx.showToast({
+          title: '没有更多了',
+          icon: 'none'
+        })
+      }
+      
+    }
+  },
+  // 商品列表滚动到底部触发的操作
+  goodsBottom(){
+    this.setData({
+      page:this.data.page + 1
+    },() => {
+      this.getGoodsList() 
+    })
+  },
+  // 点击商品按钮选择规格或者跳转购物车
+  addShopcar(e){
+    const { id } = e.currentTarget.dataset
+    const curGood = this.data.currentGoods.find(el => {
+      return el.id = id
+    })
+    console.log(curGood);
   },
   /**
    * 生命周期函数--监听页面加载
