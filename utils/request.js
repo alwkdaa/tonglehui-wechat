@@ -24,7 +24,13 @@ class RequestError extends Error {
 //添加请求拦截器
 fly.interceptors.request.use((request) => {
   //给所有请求添加自定义header
-
+  // 拿到token和uid，添加到header中
+  const uid = wx.getStorageSync('uid')
+  const token = wx.getStorageSync('token')
+  if(uid || token){
+    request.headers['uid'] = uid
+    request.headers['token'] = token
+  }
   //可以显式返回request, 也可以不返回，没有返回值时拦截器中默认返回request
   return request;
 })
