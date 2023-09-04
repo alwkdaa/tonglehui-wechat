@@ -1,4 +1,6 @@
 // pages/my/index.js
+// 引入封装的登录鉴权方法
+const { checkHasLogined, authorize } = require('../../utils/auth')
 Page({
 
   /**
@@ -7,7 +9,15 @@ Page({
   data: {
 
   },
-
+  // 登录方法
+  async login() {
+    const islogin = await checkHasLogined()
+    console.log(islogin,"是否登录");
+    if(!islogin){
+      await authorize()
+      // 处理登录成功后的逻辑
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */

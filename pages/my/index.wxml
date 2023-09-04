@@ -1,2 +1,4 @@
 <!--pages/my/index.wxml-->
-<text>pages/my/index.wxml</text>
+<view>
+  <button bindtap="login">微信一键授权</button>
+</view>
