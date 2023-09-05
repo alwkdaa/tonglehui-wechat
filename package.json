@@ -1,25 +1,26 @@
 {
-  "name": "my-wxchat",
-  "version": "1.0.0",
-  "description": "",
-  "main": ".eslintrc.js",
+  "name": "wechat-app-mall",
+  "version": "8.4.0",
+  "description": "删除 <float-menu />",
+  "main": "app.js",
   "dependencies": {
-    "@vant/weapp": "^1.10.25",
+    "@vant/weapp": "^1.10.4",
+    "apifm-wxapi": "^3.55.0",
+    "big.js": "^6.2.1",
     "flyio": "^0.6.14",
-    "apifm-wxapi": "^3.55.0"
+    "lodash": "^4.17.21",
+    "mp-html": "^2.3.1",
+    "wxa-plugin-canvas": "^1.1.12",
+    "wxbarcode": "^1.0.2"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alwkdaa/tonglehui-wechat.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/alwkdaa/tonglehui-wechat/issues"
-  },
-  "homepage": "https://github.com/alwkdaa/tonglehui-wechat#readme"
+  "keywords": [
+    "微店",
+    "小店",
+    "微商城"
+  ],
+  "author": "gooking",
+  "license": "ISC"
 }

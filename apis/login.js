@@ -21,3 +21,7 @@ export function encrypt(data) {
 export function getPhone(data){
   return request.get(`/getPhone?code=${data}`)
 }
+
+export function getUserInfo() {
+  return request.get('/getUserInfo')
+}
