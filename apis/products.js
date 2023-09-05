@@ -49,7 +49,11 @@ export function goodSelectSku(data) {
   return request.post('/shopping-cart/goodSelectSku', data)
 }
 // 获取购物车的角标，也就是所添加的商品数量
-
 export function selectGoods() {
   return request.get('/shopping-cart/selectGoods')
+}
+
+// 购物车接口
+export function goodsInfo () {
+  return request.get('/shopping-cart/info')
 }

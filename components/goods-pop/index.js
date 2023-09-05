@@ -131,12 +131,13 @@ Component({
       await goodSelectSku({ goodInfo: this.data.skuCurGoods, pic: this.data.skuGoodsPic })
       wx.showToast({
         title: '加入成功',
+        icon: 'success'
       })
       TOOLS.showTabBarBadge()
       wx.showTabBar()
-      this.setData({
+     /*  this.setData({
         show:false
-      })
+      }) */
     },
     // 接收当前商品的数据
     checkSkuSelect(product) {
