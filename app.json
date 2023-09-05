@@ -11,7 +11,8 @@
     "pages/shop-cart/index",
     "pages/goods/list",
     "pages/goods/list-vop",
-    "pages/goods/fav"
+    "pages/goods/fav",
+    "pages/to-pay-order/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
