@@ -50,8 +50,39 @@ Page({
     })
   },
   // 提交订单
-  onSubmit(){
-    
+  async onSubmit(){
+    // 提交订单调用支付按钮，需要传递参数，配送方式，备注
+    const params = {
+      remark: this.data.remark,
+      peisongType: this.data.peisongType
+    }
+    if(this.data.peisongType == 'zq'){
+      params.name = this.data.name
+      params.mobile = this.data.mobile
+    }
+    // 如果是立即支付，需要传入商品支付，通过orderType判断
+    if(this.data.orderType == 'buyNow'){
+      params.goods = this.data.goodsList
+    }
+    // 这里调用下单的接口，后端会调用微信支付的接口，然后返回预支付交易的会话标识prepay_id
+    const res = await createOrder(params)
+    // 调用支付接口，唤起收银台，调用wx.requestPayment(Object object)方法
+    wx.requestPayment({
+      nonceStr: res.nonceStr,
+      signType: 'RSA',
+      paySign: res.paySign,
+      package: 'prepay_id=' + res.prepay_id,
+      timestamp:res.timestamp,
+      success(){
+        // 支付成功后跳转到订单列表页面
+        wx.redirectTo({
+          url: '/pages/order-list/index?type=1',
+        })
+      },
+      fail() {
+        console.log('微信支付失败')
+      }
+    })
   },
 
   onLoad(e) {

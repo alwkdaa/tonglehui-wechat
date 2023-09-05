@@ -72,3 +72,7 @@ export function delGoods (data) {
 export function modifyNumber (data) {
   return request.post('/shopping-cart/modifyNumber', data)
 }
+// 创建订单接口
+export function createOrder(data) {
+  return request.post('/createOrder', data)
+}
