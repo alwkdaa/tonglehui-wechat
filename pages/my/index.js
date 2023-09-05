@@ -31,14 +31,17 @@ Page({
   onShow() {
     const _this = this
     AUTH.checkHasLogined().then(isLogined => {
+      console.log(isLogined,"isLogined");
       if (isLogined) {
+        // console.log('登陆了');
         _this.getUserApiInfo();
         TOOLS.showTabBarBadge();
       } else {
         // 登录
+        console.log("未登录");
         AUTH.newAuthorize().then(() => {
-          _this.getUserApiInfo();
-          TOOLS.showTabBarBadge();
+           _this.getUserApiInfo();
+          TOOLS.showTabBarBadge(); 
         })
       }
     })
@@ -59,13 +62,17 @@ Page({
     })
   },
   async getUserApiInfo() {
+    // console.log("111");
     const {avatarUrl, userMobile, userName, id} = await getUserInfo()
     const _data = {}
     console.log(avatarUrl, 'avatarUrl')
+    console.log(userMobile, 'userMobile')
     
     if (!avatarUrl && !userMobile) {
+      console.log("11111");
       _data.userInfoStatus = 1
     } else {
+      console.log("222222");
       _data.userInfoStatus = 2
       _data.apiUserInfoMap = {}
       _data.apiUserInfoMap.avatarUrl = avatarUrl
@@ -73,9 +80,10 @@ Page({
       _data.apiUserInfoMap.userMobile = userMobile
       _data.apiUserInfoMap.id = id
     }
+    console.log(_data,"data");
     this.setData(_data)
   },
-  async memberCheckedChange() {
+  /* async memberCheckedChange() {
     const res = await WXAPI.peisongMemberChangeWorkStatus(wx.getStorageSync('token'))
     if (res.code != 0) {
       wx.showToast({
@@ -85,8 +93,8 @@ Page({
     } else {
       this.getUserApiInfo()
     }
-  },
-  getUserAmount: function () {
+  }, */
+  /* getUserAmount: function () {
     var that = this;
     WXAPI.userAmount(wx.getStorageSync('token')).then(function (res) {
       if (res.code == 0) {
@@ -98,11 +106,11 @@ Page({
         });
       }
     })
-  },
-  handleOrderCount: function (count) {
+  }, */
+ /*  handleOrderCount: function (count) {
     return count > 99 ? '99+' : count;
-  },
-  orderStatistics: function () {
+  }, */
+  /* orderStatistics: function () {
     WXAPI.orderStatistics(wx.getStorageSync('token')).then((res) => {
       if (res.code == 0) {
         const {
@@ -119,23 +127,23 @@ Page({
         })
       }
     })
-  },
-  goAsset: function () {
+  }, */
+  /* goAsset: function () {
     wx.navigateTo({
       url: "/pages/asset/index"
     })
-  },
-  goScore: function () {
+  }, */
+  /* goScore: function () {
     wx.navigateTo({
       url: "/pages/score/index"
     })
-  },
-  goOrder: function (e) {
+  }, */
+  /* goOrder: function (e) {
     wx.navigateTo({
       url: "/pages/order-list/index?type=" + e.currentTarget.dataset.type
     })
-  },
-  scanOrderCode(){
+  }, */
+  /* scanOrderCode(){
     wx.scanCode({
       onlyFromCamera: true,
       success(res) {
@@ -151,8 +159,8 @@ Page({
         })
       }
     })
-  },
-  updateUserInfo(e) {
+  }, */
+  /* updateUserInfo(e) {
     wx.getUserProfile({
       lang: 'zh_CN',
       desc: '用于完善会员资料',
@@ -176,9 +184,9 @@ Page({
         })
       }
     })
-  },
+  }, */
   // 获取用户手机号
-  getPhoneNumber (e) {
+ /*  getPhoneNumber (e) {
     getPhone(e.detail.code).then((res) => {
       this.setData({
         apiUserInfoMap: {
@@ -188,8 +196,8 @@ Page({
         userInfoStatus: 2
       })
     })
-  },
-  async _updateUserInfo(userInfo) {
+  }, */
+  /* async _updateUserInfo(userInfo) {
     const postData = {
       token: wx.getStorageSync('token'),
       nick: userInfo.nickName,
@@ -210,13 +218,13 @@ Page({
       title: '登陆成功',
     })
     this.getUserApiInfo()
-  },
-  gogrowth() {
+  }, */
+  /* gogrowth() {
     wx.navigateTo({
       url: '/pages/score/growth',
     })
-  },
-  async cardMyList() {
+  }, */
+  /* async cardMyList() {
     const res = await WXAPI.cardMyList(wx.getStorageSync('token'))
     if (res.code == 0) {
       const myCards = res.data.filter(ele => { return ele.status == 0 })
@@ -226,5 +234,5 @@ Page({
         })
       }
     }
-  },
+  }, */
 })

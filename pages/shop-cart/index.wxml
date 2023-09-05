@@ -1,1 +1,6 @@
 <!--index.wxml-->
+<!-- 引入模板购物车 -->
+<import src="../template-cart/template-cart" />
+<view>
+  <template is="{{shippingCarInfo.items.length > 0 ? 'cart-goods-list' : 'no-goods'}}" data="{{...shippingCarInfo}}"></template>
+</view>

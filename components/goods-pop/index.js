@@ -135,9 +135,9 @@ Component({
       })
       TOOLS.showTabBarBadge()
       wx.showTabBar()
-     /*  this.setData({
+      this.setData({
         show:false
-      }) */
+      })
     },
     // 接收当前商品的数据
     checkSkuSelect(product) {

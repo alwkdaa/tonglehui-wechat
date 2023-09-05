@@ -57,3 +57,18 @@ export function selectGoods() {
 export function goodsInfo () {
   return request.get('/shopping-cart/info')
 }
+export function goodSelect (data) {
+  return request.post('/shopping-cart/goodSelect', data)
+}
+export function addGoods (data) {
+  return request.post('/shopping-cart/addGoods', data)
+}
+
+// 删除商品
+export function delGoods (data) {
+  return request.post('/shopping-cart/delGoods', data)
+}
+// 修改商品数量
+export function modifyNumber (data) {
+  return request.post('/shopping-cart/modifyNumber', data)
+}

@@ -1,6 +1,7 @@
 // pages/category/index.js
 // 引入接口
-const { category, goodlist } = require('../../apis/products')
+const { category, goodlist, addGoods} = require('../../apis/products')
+const TOOLS = require('../../utils/tools')
 Page({
 
   /**
@@ -25,8 +26,7 @@ Page({
     wx.scanCode({
       // 扫码的类型
       scanType: ['qrCode'],
-      success (res) {
-        console.log(res);
+      success: res => {
         // 跳转 通过wx.navigateTo()
         wx.navigateTo({
           url: `/pages/goods/list?name=${res.result}`,
@@ -128,14 +128,26 @@ Page({
     })
   },
   // 点击商品按钮选择规格或者跳转购物车
-  addShopcar(e){
-    const { id } = e.currentTarget.dataset
+  async addShopcar(e){
+/*     console.log( this.data.currentGoods);
+    console.log(e.currentTarget.dataset.id); */
     const curGood = this.data.currentGoods.find(el => {
-      return el.id = id
+      return el.id == e.currentTarget.dataset.id
     })
-    this.setData({
-      skuCurGoods: curGood
-    })
+/*     console.log(curGood);
+    console.log(curGood.id,'id');
+    console.log(curGood.hasAddition,'curGood'); */
+    // 如果没有规格选择项就不需要打开弹窗
+    if(!curGood.hasAddition){
+      // console.log("1111");
+      await addGoods(curGood)
+      TOOLS.showTabBarBadge()
+    }else{
+      this.setData({
+        skuCurGoods: curGood
+      })
+    }
+    
   },
   /**
    * 生命周期函数--监听页面加载

@@ -3,7 +3,7 @@
 const { checkToken,loginApi } = require('../apis/login')
 const WXAPI = require('apifm-wxapi')
 // 检查登录态是否过期
-async function checkSession () {
+async function checkSession(){
   // 想要拿到checkSession的成功和失败，在这里使用返回一个Promise对象
   return new Promise((resolve, reject) => {
     wx.checkSession({
@@ -35,10 +35,12 @@ async function checkHasLogined() {
   // 从缓存中获取token
   const token = wx.getStorageSync('token')
   // 如果没有token代表没有登录 返回false
-  if(!token) return false
+  if (!token) {
+    return false
+  }
   // 检查登录态是否过期
   const loggined = await checkSession()
-  if(!loggined){
+  if (!loggined) {
     // 清除登录缓存
     wx.removeStorageSync('token')
     return false
@@ -46,7 +48,7 @@ async function checkHasLogined() {
   //判断token是否合法
   const checkTokenRes = await checkToken({ token })
   // 这里请求接口后端返回的数据，如果为-1就是非法的请求
-  if(checkTokenRes == -1) {
+  if(checkTokenRes.code == -1) {
     wx.removeStorageSync('token')
     return false
   }
@@ -59,7 +61,7 @@ async function wxaCode() {
   return new Promise((resolve, reject) => {
     wx.login({
       success: (res) => {
-        resolve(res.code)
+        return resolve(res.code)
       },
       fail() {
         wx.showToast({
@@ -72,7 +74,7 @@ async function wxaCode() {
   })
 }
 async function login(page){
-  console.log('登录')
+  // console.log('登录')
   const _this = this
   wx.login({
     success: function (res) {
@@ -159,7 +161,7 @@ async function authorize (){
             }
           })
         } else {
-          console.log(code, 'code')
+          // console.log(code, 'code')
           WXAPI.authorize({
             code: code,
             referrer: referrer

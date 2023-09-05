@@ -40,4 +40,4 @@
   </scroll-view>
 </view>
 <!-- 弹出层 -->
-<goods-pop skuCurGoodsBaseInfo="{{skuCurGoods}}"></goods-pop>
+<goods-pop skuCurGoodsBaseInfo="{{ skuCurGoods }}"></goods-pop>
