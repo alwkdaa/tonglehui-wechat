@@ -1,8 +1,10 @@
-const { getGoodDetail } = require('../../apis/products')
+const { getGoodDetail, goodSelectSku } = require('../../apis/products')
+const TOOLS = require('../../utils/tools')
 Component({
   data: {
     show: false,
-    skuCurGoods: []
+    skuCurGoods: [],
+    skuGoodsPic:""
   },
   // 父子间传进来的数据
   properties: {
@@ -36,7 +38,8 @@ Component({
       skuCurGoods.basicInfo.storesBuy = 1
       this.setData({
         show: true,
-        skuCurGoods 
+        skuCurGoods,
+        skuGoodsPic: skuCurGoods.basicInfo.pic
       })
     },
     // 弹出层关闭
@@ -75,8 +78,21 @@ Component({
           el.active = false
         }
       })
+      // 选择不同的规格显示不同的图片
+      // 先拿到当前的数据
+      let skuGoodsPic = this.data.skuGoodsPic
+      // 当规格图片数据存在时显示
+      if(skuCurGoods.subPics && skuCurGoods.subPics.length > 0){
+        const _subPic = skuCurGoods.subPics.find(el => {
+          return el.optionValueId == child.id
+        })
+        if(_subPic){
+          skuGoodsPic = _subPic.pic
+        }
+      }
       this.setData({
-        skuCurGoods
+        skuCurGoods,
+        skuGoodsPic
       })
     },
     // 数量增加
@@ -101,8 +117,49 @@ Component({
       }
     },
     // 加入购物车按钮
-    addCarSku(){
-
+    async addCarSku(){
+      // 先对数据校验，校验是否存在未选中的sku，只有将规格都选上了才能添加购物车，checkSkuSelect（）方法校验
+      // 将当前商品传递进去，应该让这个方法返回true或false
+      if(!this.checkSkuSelect(this.data.skuCurGoods)){
+        wx.showToast({
+          title: '请选择规格/配件',
+          icon: 'none'
+        })
+        return
+      }
+      // 加入购物车
+      await goodSelectSku({ goodInfo: this.data.skuCurGoods, pic: this.data.skuGoodsPic })
+      wx.showToast({
+        title: '加入成功',
+      })
+      TOOLS.showTabBarBadge()
+      wx.showTabBar()
+      this.setData({
+        show:false
+      })
+    },
+    // 接收当前商品的数据
+    checkSkuSelect(product) {
+      let flag = false
+      if(product.properties && product.properties.length > 0){
+        // 定义一个变量记录每一个规格选中的结果
+        const checkResult = []
+        // 判断的逻辑就是判断是否存在active，因为之前给选中的规格都添加了active字段代表选中
+        product.properties.forEach((item,index) => {
+          checkResult.push(false)
+          item.childsCurGoods.forEach(child => {
+            if(child.active){
+              checkResult[index] = true
+            }
+          })
+        })
+        if(checkResult.length === 0){
+          flag = true
+        }else{
+          flag = !checkResult.filter(el => !el).length
+        }
+      }
+      return flag
     }
   }
 })

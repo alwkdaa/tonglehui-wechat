@@ -44,3 +44,12 @@ export function goodlist ({ page, pageSize, categoryId }) {
 export function getGoodDetail(id) {
   return request.get(`/getGoodDetail?id=${id}`)
 }
+// 加入购物车
+export function goodSelectSku(data) {
+  return request.post('/shopping-cart/goodSelectSku', data)
+}
+// 获取购物车的角标，也就是所添加的商品数量
+
+export function selectGoods() {
+  return request.get('/shopping-cart/selectGoods')
+}

@@ -5,7 +5,7 @@
   custom-style="padding-top: 32rpx"
   bind:close="onClose"
 >
-  <van-card price="{{skuCurGoods.basicInfo.minPrice}}" title="{{skuCurGoods.basicInfo.name}}" thumb="{{skuCurGoods.basicInfo.pic}}"></van-card>
+  <van-card price="{{skuCurGoods.basicInfo.minPrice}}" title="{{skuCurGoods.basicInfo.name}}" thumb="{{skuGoodsPic}}"></van-card>
   <view class="sku-container">
     <view class="sku" wx:for="{{skuCurGoods.properties}}" wx:key="id">
       <view class="t">{{item.name}}</view>
