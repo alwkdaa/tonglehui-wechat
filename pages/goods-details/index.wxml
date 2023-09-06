@@ -34,7 +34,14 @@
         </view>
       </view>
     </view>
-    <view id="goods-des-info"></view>
+    <view class="goods-des-info" id="goods-des-info">
+      <view class="label-title">
+        <view class="left">商品详情</view>
+      </view>
+      <view class="goods-text">
+        <mp-html content="{{goodsDetail.content}}"></mp-html>
+      </view>
+    </view>
     <view id="reputation"></view>
   </scroll-view>
 </view>
