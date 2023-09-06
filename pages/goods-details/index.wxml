@@ -1,0 +1,47 @@
+<!-- 粘性布局tab  -->
+<view class="container">
+  <van-sticky>
+    <van-tabs bind:click="onTabChange">
+      <van-tab wx:for="{{tabs}}" wx:key="index" title="{{item.tabs_name}}" name="{{item.tabs_name}}" ></van-tab>
+    </van-tabs>
+  </van-sticky>
+  <scroll-view class="scroll-container" scroll-y scroll-into-view="{{toView}}" scroll-with-animation>
+    <view id="swiper-container">
+      <swiper class="swiper_box" indicator-dots="true" indicator-active-color="#fff" circular>
+        <swiper-item wx:for="{{goodsDetail.pics}}" wx:key="id">
+          <image src="{{item.pic}}" mode="aspectFill" class="slide-image" lazy-load="true"></image>
+        </swiper-item>
+      </swiper>
+    </view>
+    <view class="goods-info">
+      <view class="goods-info-top-container">
+        <view class="goods-profile">
+          <view class="p">
+            <text>￥</text>
+            {{selectSizePrice}}
+          </view>
+        </view>
+        <view class="goods-info-fx">
+          <view class="item left">
+            <van-icon name="share-o" size="24px"></van-icon>
+            <view class="icon-title">分享</view>
+            <button open-type="share"></button>
+          </view>
+          <view class="item" bindtap="drawSharePic">
+            <van-icon name="qr" size="24px"></van-icon>
+            <view class="icon-title">二维码</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view id="goods-des-info"></view>
+    <view id="reputation"></view>
+  </scroll-view>
+</view>
+<poster id="poster" config="{{posterConfig}}" bind:success="onPosterSuccess">
+  <view wx:if="{{showposterImg}}" class="popup-mask"></view>
+  <view wx:if="{{showposterImg}}" class="posterImg-box">
+    <image class="posterImg" src="{{posterImg}}" mode="widthFix"></image>
+    <view class="btn-create" bindtap="savePosterPic">保存到相册</view>
+  </view>
+</poster>

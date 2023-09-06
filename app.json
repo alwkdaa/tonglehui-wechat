@@ -12,7 +12,9 @@
     "pages/goods/list",
     "pages/goods/list-vop",
     "pages/goods/fav",
-    "pages/to-pay-order/index"
+    "pages/to-pay-order/index",
+    "pages/goods-details/index",
+    "pages/goods-details/vop"
   ],
   "window": {
     "backgroundTextStyle": "light",

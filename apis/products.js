@@ -76,3 +76,8 @@ export function modifyNumber (data) {
 export function createOrder(data) {
   return request.post('/createOrder', data)
 }
+
+// 获取小程序二维码
+export function createQRCode (data) {
+  return request.post('/createQRCode', data)
+}
